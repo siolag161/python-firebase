@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 import os
+import multiprocessing
 
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
     long_description = readme.read()
 
 
@@ -34,6 +35,6 @@ setup(name='python-firebase',
       license='MIT',
       packages=['firebase'],
       test_suite='tests.all_tests',
-      install_requires=['requests>=1.1.0'],
+      install_requires=['requests>=1.1.0', 'jsonpickle>=0.8.0'],
       zip_safe=False,
 )

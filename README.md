@@ -2,16 +2,16 @@
 
 Python interface to the Firebase's REST API
 
-[![Firebase](https://www.firebase.com/images/logo.png)](http://www.firebase.com)
+[![Firebase](https://avatars0.githubusercontent.com/u/1335026?v=3&s=200)](http://www.firebase.com)
 
 ## Installation
 
-[![Build Status](https://travis-ci.org/ozgur/python-firebase.png?branch=master)](https://travis-ci.org/ozgur/python-firebase)
+[![Build Status](https://travis-ci.org/siolag161/python-firebase.png?branch=master)](https://travis-ci.org/siolag161/python-firebase)
 
 python-firebase highly makes use of the **requests** library so before you begin, you need to have that package installed.
 
-    $ sudo pip install requests
-    $ sudo pip install python-firebase
+    $ pip install requests
+    $ pip install python-firebase
 
 ## Getting Started
 

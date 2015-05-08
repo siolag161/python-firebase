@@ -10,7 +10,7 @@ from .firebase_token_generator import FirebaseTokenGenerator
 from .decorators import http_connection
 
 from .async import process_pool
-from .jsonutil import JSONEncoder
+from .jsonutil import json_encode
 
 __all__ = ['FirebaseAuthentication', 'FirebaseApplication']
 
@@ -297,7 +297,7 @@ class FirebaseApplication(object):
         headers = headers or {}
         endpoint = self._build_endpoint_url(url, name)
         self._authenticate(params, headers)
-        data = json.dumps(data, cls=JSONEncoder)
+        data = json_encode(data)
         return make_put_request(endpoint, data, params, headers,
                                 connection=connection)
 
@@ -310,7 +310,7 @@ class FirebaseApplication(object):
         headers = headers or {}
         endpoint = self._build_endpoint_url(url, name)
         self._authenticate(params, headers)
-        data = json.dumps(data, cls=JSONEncoder)
+        data = json_encode(data)
         process_pool.apply_async(make_put_request,
                                  args=(endpoint, data, params, headers),
                                  callback=callback)
@@ -324,7 +324,7 @@ class FirebaseApplication(object):
         headers = headers or {}
         endpoint = self._build_endpoint_url(url, None)
         self._authenticate(params, headers)
-        data = json.dumps(data, cls=JSONEncoder)
+        data = json_encode(data)
         return make_post_request(endpoint, data, params, headers,
                                  connection=connection)
 
@@ -336,7 +336,7 @@ class FirebaseApplication(object):
         headers = headers or {}
         endpoint = self._build_endpoint_url(url, None)
         self._authenticate(params, headers)
-        data = json.dumps(data, cls=JSONEncoder)
+        data = json_encode(data)
         process_pool.apply_async(make_post_request,
                                  args=(endpoint, data, params, headers),
                                  callback=callback)
@@ -350,7 +350,7 @@ class FirebaseApplication(object):
         headers = headers or {}
         endpoint = self._build_endpoint_url(url, None)
         self._authenticate(params, headers)
-        data = json.dumps(data, cls=JSONEncoder)
+        data = json_encode(data)
         return make_patch_request(endpoint, data, params, headers,
                                   connection=connection)
 
@@ -362,7 +362,7 @@ class FirebaseApplication(object):
         headers = headers or {}
         endpoint = self._build_endpoint_url(url, None)
         self._authenticate(params, headers)
-        data = json.dumps(data, cls=JSONEncoder)
+        data = json_encode(data)
         process_pool.apply_async(make_patch_request,
                                  args=(endpoint, data, params, headers),
                                  callback=callback)

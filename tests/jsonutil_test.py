@@ -3,7 +3,7 @@ import datetime
 import decimal
 import json
 
-from firebase.jsonutil import JSONEncoder
+from firebase.jsonutil import json_encode, json_decode
 
 
 class JSONTestCase(unittest.TestCase):
@@ -11,11 +11,11 @@ class JSONTestCase(unittest.TestCase):
         self.data = {'now': datetime.datetime.now(),
                      'oneday': datetime.timedelta(days=1),
                      'five': decimal.Decimal(5),
-                     'date': datetime.date(2014, 03, 11)}
+                     'date': datetime.date(2014, 3, 11)}
 
     def test_conversion(self):
-        serialized = json.dumps(self.data, cls=JSONEncoder)
-        deserialized = json.loads(serialized)
+        serialized = json_encode(self.data)
+        deserialized = json_decode(serialized)
         self.assertEqual(deserialized['oneday'], 86400)
         self.assertTrue(type(deserialized['five']) == float)
         self.assertEqual(deserialized['five'], float(5))
